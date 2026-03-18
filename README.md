@@ -1,2 +1,2 @@
-# NTD_AGG
-Neglected Tropical Diseases
+# NCD_CR
+Cancer Registry
