@@ -1,5 +1,5 @@
-# Release Note { #ntd-agg-release-note }
+# Release Note { #ncd-cr-release-note }
 
 ## 1.0.0
 
-Initial release of the Neglecte Tropical Diseases package
+Initial release of the Cancer Registry package
