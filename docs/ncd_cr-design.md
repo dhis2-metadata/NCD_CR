@@ -1,4 +1,4 @@
-# Neglected Tropical Diseases Overarching Module - System Design Guide { #ntd-agg-design }
+# Cancer Registry Module - System Design Guide { #ncd-cr-design }
 
 ## Background and Purpose
 
