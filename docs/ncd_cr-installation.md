@@ -1,6 +1,6 @@
-# Neglected Tropical Diseases (NTD) Installation Guide { #ntd-agg-installation }
+# Cancer Registry (CR) Installation Guide { #ncd-cr-installation }
 
-This document includes an installation guide for the Neglected Tropical Diseases package.
+This document includes an installation guide for the Cancer Registry package.
 
 System default language: English
 
@@ -8,10 +8,9 @@ System default language: English
 
 The metadata reference and metadata json files provide technical details on package version and content.
 
-The metadata package consists of the following modules:
+The metadata package consists of the following module:
 
-- Neglected Tropical Diseases
-- Neglected Tropical Diseases (dashboard)
+- Cancer Registry
 
 ## Installation
 
@@ -49,52 +48,10 @@ importing it into DHIS2.
 It is required to apply some changes to the metadata file before it can be imported. The scope of work may vary from
 package to package.
 
-### Default data dimension
-
-In early versions of DHIS2, the UIDs of the default data dimensions were auto-generated. Thus, while all DHIS2 instances
-have a default category option, data element category, category combination and category option combination, the UIDs of
-these defaults can be different. Later versions of DHIS2 have hardcoded UIDs for the default dimension, and these UIDs
-are used in the configuration packages.
-
-To avoid conflicts when importing the metadata, it is advisable to search and replace the entire .json file for all
-occurrences of these default objects, replacing UIDs of the .json file with the UIDs from the instance in which the file
-will be imported. Table 1 shows the UIDs which should be replaced, as well as the API endpoints to identify the existing
-UIDs
-
-| Object                      | UID           | API endpoint                                              |
-|-----------------------------|---------------|-----------------------------------------------------------|
-| Category                    | `GLevLNI9wkl` | `../api/categories.json?filter=name:eq:default`           |
-| Category option             | `xYerKDKCefk` | `../api/categoryOptions.json?filter=name:eq:default`      |
-| Category combination        | `bjDvmb4bfuf` | `../api/categoryCombos.json?filter=name:eq:default`       |
-| Category option combination | `HllvX50cXC0` | `../api/categoryOptionCombos.json?filter=name:eq:default` |
-
-Identify the UIDs of the default dimensions in your instance using the listed API requests and replace the UIDs in the
-json file with the UIDs from the instance.
-
 > **NOTE**
 >
 > Note that this search and replace operation must be done with a plain text editor, not a word processor like Microsoft
 > Word.
-
-### Indicator types
-
-Indicator type is another type of object that can create import conflict because certain names are used in different
-DHIS2 databases (.e.g "Percentage"). Since Indicator types are defined by their factor (including 1 for "numerator only"
-indicators), they are unambiguous and can be replaced through a search and replace of the UIDs. This method helps avoid
-potential import conflicts, and prevents the implementer from creating duplicate indicator types. The table below
-contains the UIDs which could be replaced, as well as the API endpoints to identify the existing UIDs:
-
-| Object                  | UID           | API endpoint                                                             |
-|-------------------------|---------------|--------------------------------------------------------------------------|
-| Percentage              | `hmSnCXmLYwt` | `../api/indicatorTypes.json?filter=number:eq:false&filter=factor:eq:100` |
-| Numerator only (number) | `CqNPn5KzksS` | `../api/indicatorTypes.json?filter=number:eq:true&filter=factor:eq:1`    |
-
-### Visualizations using Root Organisation Unit UID
-
-Visualizations, event reports, report tables and maps that are assigned to a specific organisation unit level or
-organisation unit group, have a reference to the root (level 1) organisation unit. Such objects, if present in the
-metadata file, contain a placeholder `<OU_ROOT_UID>`. Use the search function in the .json file editor to possibly
-identify this placeholder and replace it with the UID of the level 1 organisation unit in the target instance.
 
 ## Importing metadata
 
@@ -160,18 +117,15 @@ First, you will have to use the *Sharing* functionality of DHIS2 to configure wh
 metadata and data associated with the program as well as who can register/enter data into the program. By default,
 sharing has been configured for the following:
 
-- Dashboards
-- Visualizations, maps, event reports and report tables
-- Data sets
-- Category options
+- Program
 
 Please refer to the [DHIS2 documentation](#sharing) for more information on sharing.
 
 Three core user groups are included in the packages:
 
-- NTD - Access (view metadata/view data)
-- NTD - Admin (view and edit metadata/no access to data)
-- NTD - Data Capture - (view metadata/capture and view data)
+- CR - Access (view metadata/view data)
+- CR - Admin (view and edit metadata/no access to data)
+- CR - Data Capture - (view metadata/capture and view data)
 
 The users are assigned to the appropriate user group based on their role within the system. Sharing for other objects in
 the package may be adjusted depending on the set-up. Refer to the [DHIS2 Documentation on sharing](#sharing) for more
@@ -191,14 +145,8 @@ Refer to the [DHIS2 Documentation](https://docs.dhis2.org/) for more information
 
 ### Organisation unit assignment
 
-The data sets must be assigned to organisation units within existing hierarchy in order to be accessible via capture
+The program must be assigned to organisation units within existing hierarchy in order to be accessible via capture
 app.
-
-### Indicator mapping
-
-When implementing the _dashboard package_ only, the indicator numerators and denominators have to be configured using
-the metadata objects in the existing instance. Configuration information is available in the documentation and the
-description of numerators and denominators in the metadata file.
 
 ### Duplicated metadata
 
