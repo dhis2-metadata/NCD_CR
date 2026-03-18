@@ -2,18 +2,18 @@
 
 ## Release Note
 
-- [Release Note](#ntd-agg-release-note)
+- [Release Note](#ncd-cr-release-note)
 
 ## Design
 
-- [Version 1.0.0](#ntd-agg-design)
+- [Version 1.0.0](#ncd-cr-design)
 
 ## Installation
 
-- [Installation Guide](#ntd-agg-installation)
+- [Installation Guide](#ncd-cr-installation)
 
 ## Metadata Reference
 
-- [Version 1.0.0](https://packages.dhis2.org/en/NTD_AGG/1.0.0/DHIS2.41/NTD_AGG_COMPLETE_1.0.0_DHIS2.41.xlsx)
+- [Version 1.0.0](https://packages.dhis2.org/en/NCD_CR/1.0.0/DHIS2.42/NCD_CR_COMPLETE_1.0.0_DHIS2.42.xlsx)
 
 ## Resources
