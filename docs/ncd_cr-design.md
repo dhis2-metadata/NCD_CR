@@ -178,10 +178,209 @@ the full set of quality control checks is executed.
 | CR - Rare                                   | Boolean        |
 | CR - Invalid                                | Boolean        |
 
+This section is always hidden from the data entry interface. It contains all 
+data quality checks, each implemented as a separate data element. By default, 
+all checks are assigned a false value by the program rule *CR - Clear all 
+checks*, which resets any checks that previously returned a true result 
+whenever the **Run checks** element is unchecked.
 
+The only check with a different value type is the **Multiple primary test 
+result**, whose output is not a boolean but one of three possible values: 
+*Duplicate primary*, *Multiple primary*, or *Unknown topography*. The full 
+logic of each check is described in the [Checks section](#Checks) of this 
+document.
 
+In addition to the individual checks, this section contains two summary 
+classification elements: **Rare** and **Invalid**. Like the other check 
+elements, both are reset to false each time the **Run checks** element is 
+unchecked. Their true values are then assigned when the checks are executed: 
+the **Rare** element is set to true if any check with a rare output returns a 
+true result; the **Invalid** element is set to true if any check with an 
+invalid output returns a true result.
 
+These two elements serve a dual purpose. They can be used in analytical outputs 
+to restrict counts to tumors that have passed all quality control checks, and 
+they can be applied as filters in working lists and line lists to identify and 
+review cases flagged as rare or invalid.
 
+A tumor is classified as **Rare** when the combination of entered values — such 
+as morphology, topography, age, and other variables — represents a combination 
+that can rarely occur, and a supervisor must confirm that the data entered is 
+correct. Further details are provided in the 
+[Rare status section](#rare-status) of this document.
 
+A tumor is classified as **Invalid** when the data entered describes a 
+combination that is anatomically and clinically impossible for a tumor to exist 
+(for example a male with ovarian topography).
+
+Following the same logic as CanReg5, the system allows users to enter and save 
+any combination of values, including those that produce an invalid result. This 
+is by design: invalid records can be identified retrospectively and corrected, 
+and can be excluded from analytical outputs. To ensure analytical integrity, it 
+is essential that the following three conditions are always applied as filters 
+when generating any analytical output:
+
+- *Run checks* = true
+- *Rare* = false **OR** *Rare* = true **AND** *Confirm rare status* = true 
+(see the [Rare status section](#rare-status))
+- *Invalid* = false
+
+#### Morphology topography check
+
+| **Data Elements**                 | **Value Type** |
+|-----------------------------------|----------------|
+| CR - Morphology Family            | Option Set     |
+| CR - Topography Morphology key    | Option Set     |
+| CR - Present in the MUST list     | Boolean        |
+| CR - Present in the MUST-NOT list | Boolean        |
+
+This section is always hidden from the data entry interface. It contains the data elements used in the calculation of the Rare Topography Morphology check. The full logic of this check is described in the [Checks section](#Checks) of this document.
+
+#### Multiple primary tester
+
+| **Data Elements**                         | **Value Type**         |
+|-------------------------------------------|------------------------|
+| CR - Morphology group                     | Option Set             |
+| CR - Previous morphology group            | Option Set             |
+| CR - Previous morphology group (multiple) | Option Set - Multitext |
+| CR - Topography group                     | Option Set             |
+| CR - Previous topography group            | Option Set             |
+| CR - Previous topography group (multiple) | Option Set - Multitext |
+| CR - Morphology result                    | Option Set             |
+
+This section is always hidden from the data entry interface. It contains the data elements used in the calculation of the Multiple primary test check. The full logic of this check is described in the [Checks section](#Checks) of this document
+
+#### Rare status
+
+This section is visible only when the tumor has been classified as rare (that is, when the **Rare** element is set to true) and is accessible exclusively to users assigned the specific role authorised to confirm the rare status. It allows a designated supervisor to review the flagged case and confirm that the data entered is correct despite the unusual combination of values.
+
+The logic governing the rare classification and the confirmation workflow are described in detail in the [Checks section](#Checks) of this document.
+
+![Confirm the rare status](resources/images/ncd_cr_confirm_rare_status.png)
+
+#### Tumor ID
+
+| **Data Elements**          | **Value Type**         |
+|----------------------------|------------------------|
+| CR - Previous tumor number | Option Set - Multitext |
+| CR - Patient ID            | Text                   |
+| CR - TUMOURID              | Text                   |
+
+This section is always hidden from the data entry interface. It contains key 
+data elements used in the extraction of cancer registry data from DHIS2 and 
+its subsequent import into CanReg5 via the Cancer Registry custom application.
+
+The **Previous Tumor Number** element is populated with the tumor number values 
+collected from previous tumor events for the same patient. This mechanism 
+prevents the same tumor number from being assigned to more than one tumor 
+belonging to the same patient. The full logic is described in the 
+[Tumor section](#Tumor) of this document.
+
+The **Patient ID** element is auto-populated with the Patient ID collected during the enrollment phase by the program rule 
+*CR - Assign value to Tumor Patient ID - Tumor*. This value is then used to 
+populate the **TUMOURID** element, which serves as the unique identifier for 
+the tumor record and is used to link one or more source records to a specific 
+tumor during the extraction and import process. The TUMOURID is composed by 
+concatenating the Patient ID, the value `01`, and the Tumor Number, as assigned 
+by the program rule *CR - Assign value to TUMOURID*.
+
+### Source
+
+The Source stage is used to record the documentation sources from which the cancer case has been notified to the registry. Each source represents a piece of documentation — such as a hospital record, pathology report, or death certificate — that supports the registration of a specific tumor. The stage is composed of two sections:
+
+| **Section**         | **Visibility** | **Description**                                        |
+|---------------------|----------------|--------------------------------------------------------|
+| Source              | Visible        | Source information                                     |
+| TUMOURIDSOURCETABLE | Not-visible    | Storing information needed for the CanReg5 exportation |
+
+#### Source section
+
+This section collects the information related to the individual source record. 
+A key aspect of the Source stage is the ability to link each source to a 
+specific tumor belonging to the same enrolled patient. As described in the 
+[Tracker Program Structure section](#Tracker-program-structure), a single tumor 
+may have multiple sources of information associated with it. To support this, 
+the user must specify the **Tumor Number** to which the source is being linked 
+at the time of data entry.
+
+If the tumor number selected in the source record has not been previously 
+assigned in any tumor event for the same patient, an error message is displayed 
+guiding the user to select a valid existing tumor number. This validation is 
+enforced by the program rule 
+*CR - Show error if the tumor number has not been assigned to any tumor*.
+
+![Error message for tumor number](resources/images/ncd_cr_tumor_number_flow.gif)
+
+The **Type of source** field uses placeholder values in the reference configuration and must be customised prior to implementation to reflect the source types relevant to the local registry context.
+
+#### TUMOURIDSOURCETABLE
+
+| **Data Elements**        | **Value Type** |
+|--------------------------|----------------|
+| CR - Patient ID          | Text           |
+| CR - TUMOURIDSOURCETABLE | Text           |
+
+This section is always hidden from the data entry interface. It contains key 
+data elements used in the extraction of cancer registry data from DHIS2 and 
+its subsequent import into CanReg5 via the Cancer Registry custom application.
+
+The **Patient ID** element is auto-populated with the Patient ID collected 
+during the enrollment phase by the program rule 
+*CR - Assign value to Tumor Patient ID - Source*. This value is combined with 
+the Tumor Number selected in the source section to populate the 
+**TUMOURIDSOURCETABLE** element, following the same concatenation logic used 
+for the TUMOURID in the Tumor stage — `Patient ID + 01 + Tumor Number` — 
+assigned by the program rule *CR - Assign value to TUMOURIDSOURCETABLE*.
+
+The **TUMOURIDSOURCETABLE** element is the key reference used during the export 
+process to link each source record to its corresponding tumor, enabling the 
+correct reconstruction of the tumor-source relationship when data is imported 
+into CanReg5.
+
+### Follow up
+
+The Follow-up stage is used to record the follow-up status of the registered patient over time. It captures the date of last contact with or information about the patient, the follow-up status, and — in cases where the recorded status is death — the date of death.
+
+![Follow up stage](resources/images/ncd_cr_follow_up.png)
 
 ## Checks
+
+One of the central features of the DHIS2 Cancer Registry toolkit is the implementation of the data quality checks used in CanReg5 to assess the completeness and accuracy of registered cancer cases. These checks represent a core component of population-based cancer registration practice, ensuring that the data collected meets the standards required for valid epidemiological analysis and international comparability.
+
+As described in the Tumor stage sections above, the implementation of these checks in DHIS2 requires the configuration of multiple program rules and several calculated data elements working in combination. The sections below describe each check in detail, including the variables involved, the conditions evaluated, and the expected outcomes.
+
+The CanReg5 checks used as reference can be found it here: https://github.com/IARC-CSU/CanReg5/tree/release/R45/src/canreg/common/qualitycontrol
+
+### Transversal considerations
+
+Several considerations apply across all or most of the checks described in 
+this section and are presented here to avoid repetition.
+
+#### Value types for data elements and option sets
+
+A key aspect of the correct implementation of the checks is the proper 
+configuration of data element and option set value types. In CanReg5, most 
+checks evaluate specific values against a range of numeric values, using the 
+numeric codes assigned to each option. It is therefore essential that in DHIS2 
+both the data elements and their associated option sets are configured with a 
+**Number** value type, and that the program rule variables referencing option 
+set values use the **code** rather than the display name. The option names may 
+remain descriptive text, but the codes must be numeric.
+
+This configuration allows CanReg5 range conditions to be translated directly 
+into DHIS2 program rule expressions without modification. For example, a 
+CanReg5 condition such as `morphologyNumber >= 8270 && morphologyNumber <= 8281` 
+can be implemented in DHIS2 using the same expression, without the need to 
+enumerate every individual value within the range. This significantly reduces 
+the complexity and length of program rule expressions.
+
+#### Grouped code logic
+
+Some CanReg5 checks use a grouping approach to optimise the evaluation of 
+topography codes, dividing the code by 10 to group a range of values. For 
+example, a function may define `topographyGroup = topographyNumber / 10` and 
+then evaluate `topographyGroup == 53` to cover all topography codes in the 
+range 530–539. Since this division operation is not natively supported in DHIS2 
+program rules, the equivalent logic must be expressed explicitly as a range 
+condition. The above example would be translated in DHIS2 as 
+`topography >= 530 && topography <= 539`.
