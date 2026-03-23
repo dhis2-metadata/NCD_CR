@@ -23992,7 +23992,7 @@
         "description": "Cancer Registry",
         "healthAreaCode": "NCD",
         "healthAreaName": "Non-Communicable Diseases",
-        "lastUpdated": "20260323T113723",
+        "lastUpdated": "20260323T130914",
         "locale": "en",
         "name": "NCD_CR_TRK_DHIS2.42.4-en",
         "type": "TRK",
@@ -24124,7 +24124,7 @@
             "translations": []
         },
         {
-            "data": "'-'",
+            "data": "'MINUS'",
             "dataElement": {
                 "id": "XR1U9dr60xI"
             },
@@ -24471,7 +24471,7 @@
             "translations": []
         },
         {
-            "data": "'+'",
+            "data": "'PLUS'",
             "dataElement": {
                 "id": "XR1U9dr60xI"
             },
@@ -24997,7 +24997,7 @@
             "translations": []
         },
         {
-            "data": "'08'",
+            "data": "'8'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25093,7 +25093,7 @@
             "translations": []
         },
         {
-            "data": "'01'",
+            "data": "'1'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25117,7 +25117,7 @@
             "translations": []
         },
         {
-            "data": "'05'",
+            "data": "'5'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25141,7 +25141,7 @@
             "translations": []
         },
         {
-            "data": "'04'",
+            "data": "'4'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25165,7 +25165,7 @@
             "translations": []
         },
         {
-            "data": "'03'",
+            "data": "'3'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25309,7 +25309,7 @@
             "translations": []
         },
         {
-            "data": "'02'",
+            "data": "'2'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25559,7 +25559,7 @@
             "translations": []
         },
         {
-            "data": "'09'",
+            "data": "'9'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25713,7 +25713,7 @@
             "translations": []
         },
         {
-            "data": "'07'",
+            "data": "'7'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -25761,7 +25761,7 @@
             "translations": []
         },
         {
-            "data": "'06'",
+            "data": "'6'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
             },
@@ -28947,6 +28947,44 @@
             "translations": []
         },
         {
+            "condition": "d2:hasValue(#{CR_TUMOR_NUMBER_PREVIOUS})&&\n!d2:hasValue(#{CR_PREVIOUS_TUMOR_NUMBER_PREVIOUS})",
+            "description": "Assign value to 'Previous tumor number' if value present",
+            "id": "mGDAGKi5kSZ",
+            "name": "CR - Assign value to 'Previous tumor number' if value present",
+            "priority": 1,
+            "program": {
+                "id": "AbPGPdlFWqc"
+            },
+            "programRuleActions": [
+                {
+                    "id": "tuR1Y76uR5s"
+                }
+            ],
+            "programStage": {
+                "id": "S12EbFtuFoI"
+            },
+            "translations": []
+        },
+        {
+            "condition": "d2:hasValue(#{CR_TUMOR_NUMBER_PREVIOUS}) &&\nd2:hasValue(#{CR_PREVIOUS_TUMOR_NUMBER_PREVIOUS})",
+            "description": "Assign value to 'Previous tumor number' if value present for both tumor number and previous tumor number",
+            "id": "yOxeoObgR4f",
+            "name": "CR - Assign value to 'Previous tumor number' if value present for both tumor number and previous tumor number",
+            "priority": 1,
+            "program": {
+                "id": "AbPGPdlFWqc"
+            },
+            "programRuleActions": [
+                {
+                    "id": "It9SI9cSutg"
+                }
+            ],
+            "programStage": {
+                "id": "S12EbFtuFoI"
+            },
+            "translations": []
+        },
+        {
             "condition": "d2:hasValue(A{CR_PATIENT_ID})",
             "description": "Assign value to Tumor Patient ID - Source",
             "id": "eXGyCVwhf16",
@@ -29080,48 +29118,10 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_TUMOR_NUMBER_PREVIOUS})&&\n!d2:hasValue(#{CR_PREVIOUS_TUMOR_NUMBER_PREVIOUS})",
-            "description": "Assing value to 'Previous tumor number' if value present",
-            "id": "mGDAGKi5kSZ",
-            "name": "CR - Assing value to 'Previous tumor number' if value present",
-            "priority": 1,
-            "program": {
-                "id": "AbPGPdlFWqc"
-            },
-            "programRuleActions": [
-                {
-                    "id": "tuR1Y76uR5s"
-                }
-            ],
-            "programStage": {
-                "id": "S12EbFtuFoI"
-            },
-            "translations": []
-        },
-        {
-            "condition": "d2:hasValue(#{CR_TUMOR_NUMBER_PREVIOUS}) &&\nd2:hasValue(#{CR_PREVIOUS_TUMOR_NUMBER_PREVIOUS})",
-            "description": "Assing value to 'Previous tumor number' if value present for both tumor number and previous tumor number",
-            "id": "yOxeoObgR4f",
-            "name": "CR - Assing value to 'Previous tumor number' if value present for both tumor number and previous tumor number",
-            "priority": 1,
-            "program": {
-                "id": "AbPGPdlFWqc"
-            },
-            "programRuleActions": [
-                {
-                    "id": "It9SI9cSutg"
-                }
-            ],
-            "programStage": {
-                "id": "S12EbFtuFoI"
-            },
-            "translations": []
-        },
-        {
             "condition": "d2:hasValue(#{CR_RUN_CHECKS})",
-            "description": "Block data entry if checkes runned",
+            "description": "Block data entry if checks runned",
             "id": "VGMIFYi0BY6",
-            "name": "CR - Block data entry if checkes runned",
+            "name": "CR - Block data entry if checks runned",
             "priority": 1,
             "program": {
                 "id": "AbPGPdlFWqc"
@@ -29162,9 +29162,9 @@
         },
         {
             "condition": "d2:hasValue(#{CR_RUN_CHECKS}) && d2:hasValue(#{CR_GRADE})",
-            "description": "Block data entry if checkes runned - Grade",
+            "description": "Block data entry if checks runned - Grade",
             "id": "cgPGDVNzuQ0",
-            "name": "CR - Block data entry if checkes runned - Grade",
+            "name": "CR - Block data entry if checks runned - Grade",
             "priority": 1,
             "program": {
                 "id": "AbPGPdlFWqc"
@@ -31115,7 +31115,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='01'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='1'",
             "description": "Show the option group 'Topography: Base of tongue' if the site selected is Base of tongue",
             "id": "p8MUnUSBCNu",
             "name": "CR - Show the option group 'Topography: Base of tongue' if the site selected is Base of tongue",
@@ -31362,7 +31362,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='04'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='4'",
             "description": "Show the option group 'Topography: Floor of mouth' if the site selected is Floor of mouth",
             "id": "kWVzqv2dArp",
             "name": "CR - Show the option group 'Topography: Floor of mouth' if the site selected is Floor of mouth",
@@ -31400,7 +31400,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='03'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='3'",
             "description": "Show the option group 'Topography: Gum' if the site selected is Gum",
             "id": "HUpfLUOsVCu",
             "name": "CR - Show the option group 'Topography: Gum' if the site selected is Gum",
@@ -31514,7 +31514,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='00'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='0'",
             "description": "Show the option group 'Topography: Lip' if the site selected is Lip",
             "id": "Gje9EfqoaBe",
             "name": "CR - Show the option group 'Topography: Lip' if the site selected is Lip",
@@ -31723,7 +31723,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='08'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='8'",
             "description": "Show the option group 'Topography: Other and unspecified major salivary glands' if the site selected is Other and unspecified major salivary glands",
             "id": "r1KJXNqkMYW",
             "name": "CR - Show the option group 'Topography: Other and unspecified major salivary glands' if the site selected is Other and unspecified major salivary glands",
@@ -31780,7 +31780,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='06'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='6'",
             "description": "Show the option group 'Topography: Other and unspecified parts of mouth' if the site selected is Other and unspecified parts of mouth",
             "id": "GrWHZPxcjgF",
             "name": "CR - Show the option group 'Topography: Other and unspecified parts of mouth' if the site selected is Other and unspecified parts of mouth",
@@ -31799,7 +31799,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='02'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='2'",
             "description": "Show the option group 'Topography: Other and unspecified parts of tongue' if the site selected is Other and unspecified parts of tongue",
             "id": "PkR4HMbOJdX",
             "name": "CR - Show the option group 'Topography: Other and unspecified parts of tongue' if the site selected is Other and unspecified parts of tongue",
@@ -31894,7 +31894,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='05'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='5'",
             "description": "Show the option group 'Topography: Palate' if the site selected is Palate",
             "id": "griEmE9mlKx",
             "name": "CR - Show the option group 'Topography: Palate' if the site selected is Palate",
@@ -31932,7 +31932,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='07'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='7'",
             "description": "Show the option group 'Topography: Parotid glanid' if the site selected is Parotid glanid",
             "id": "nqg0sVHfESb",
             "name": "CR - Show the option group 'Topography: Parotid glanid' if the site selected is Parotid glanid",
@@ -32255,7 +32255,7 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='09'",
+            "condition": "d2:hasValue(#{CR_SITE}) && #{CR_SITE}=='9'",
             "description": "Show the option group 'Topography: Tonsil' if the site selected is Tonsil",
             "id": "c5RTG6Acypy",
             "name": "CR - Show the option group 'Topography: Tonsil' if the site selected is Tonsil",
