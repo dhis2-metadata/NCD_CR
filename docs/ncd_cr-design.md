@@ -93,20 +93,90 @@ The stage is structured into multiple sections, several of which are hidden from
 
 #### Mandatory elements
 
-The only formally mandatory data element in the Tumor stage is the Tumor Number, which serves as the reference linking each tumor record to its corresponding sources and is essential for the data extraction process via the Cancer Registry custom application.
+The only formally mandatory data element in the Tumor stage is the **Tumor Number**, which serves as the reference linking each tumor record to its corresponding sources and is essential for the data extraction process via the Cancer Registry custom application.
 
-However, in practice, all data elements in both the patient and tumor sections must be populated in order for the data quality checks to execute correctly. The sole exception is the Grade field, which is not required when the behaviour code indicates a value other than malignant. This requirement is enforced by the program rule *CR - Can't run the checks if all mandatory element has not values*, which prevents the checks from running when any of the required fields are missing.
+However, in practice, all data elements in both the patient and tumor sections must be populated in order for the data quality checks to execute correctly. The sole exception is the **Grade** field, which is not required when the behaviour code indicates a value other than malignant. This requirement is enforced by the program rule *CR - Can't run the checks if all mandatory element has not values*, which prevents the checks from running when any of the required fields are missing.
 
 ![Warning message for missing variable for running the checks](resources/images/ncd_cr_run_checks.png)
 
 #### Patient
 
-The patient section collects the demographic and geographic information associated with the cancer case. The central date field in this section is the Incidence Date, which is the reference date used for all analytical outputs in CanReg5. The Event Date — the DHIS2 system date recorded at the time of data entry — is a separate field whose value is determined by local implementation decisions: it may be set to the date of data entry, aligned with the incidence date, or reflect another locally relevant date. The decision to keep the incidence date as a dedicated data element rather than using the event date for this purpose is driven by the requirements of the Cancer Registry custom extraction application, which references the data element directly.
+The patient section collects the demographic and geographic information associated with the cancer case. The central date field in this section is the **Incidence Date**, which is the reference date used for all analytical outputs in CanReg5. The Event Date — the DHIS2 system date recorded at the time of data entry — is a separate field whose value is determined by local implementation decisions: it may be set to the date of data entry, aligned with the incidence date, or reflect another locally relevant date. The decision to keep the incidence date as a dedicated data element rather than using the event date for this purpose is driven by the requirements of the Cancer Registry custom extraction application, which references the data element directly.
 
-The Age field must be entered manually. It is used in data quality checks, and a program rule verifies the consistency between the entered age, the date of birth, and the incidence date, returning a warning if a discrepancy is detected. Further details are provided in the quality checks section of this document.
+The **Age** field must be entered manually. It is used in data quality checks, and a program rule verifies the consistency between the entered age, the date of birth, and the incidence date, returning a warning if a discrepancy is detected. Further details are provided in the [quality checks section](#Checks) of this document.
 
-The Address field uses an option set that contains placeholder values and must be customised prior to implementation to reflect the administrative geography of the country or region. Rather than using a data element of value type Organisation Unit for geographic coding, the recommended approach is to use text-type data elements combined with dependent dropdown lists, implemented through program rules using the Show option group action. This allows the configuration of cascading selection menus — for example, a first element listing administrative regions, followed by a second element that displays only the districts belonging to the selected region. This approach aligns with the CanReg5 convention for address coding, where the address variable is two characters in length and typically encodes a combination of two administrative levels.
+The **Address** field uses an option set that contains placeholder values and must be customised prior to implementation to reflect the administrative geography of the country or region. Rather than using a data element of value type Organisation Unit for geographic coding, the recommended approach is to use text-type data elements combined with dependent dropdown lists, implemented through program rules using the Show option group action. This allows the configuration of cascading selection menus — for example, a first element listing administrative regions, followed by a second element that displays only the districts belonging to the selected region. This approach aligns with the CanReg5 convention for address coding, where the address variable is two characters in length and typically encodes a combination of two administrative levels.
 
+#### Tumor
+
+The tumor section is the primary data collection component of the Tumor stage. It captures the key variables that must be recorded for every cancer case, aligned and mapped to the IARC standard data requirements, with the addition of the **Tumor Number**, which serves as a local reference linking a specific tumor record to its corresponding sources.
+
+The Tumor Number is conceived as a unique identifier for the tumor within the registry. It may be a sequential number or any other locally defined value, and has an option set of text type with numeric values assigned. Combined with the **Patient ID** collected at enrollment, the Tumor Number constitutes the **Tumor ID** — the composite identifier that uniquely identifies a tumor record within the system.
+
+To prevent the same Tumor Number from being assigned to more than one tumor belonging to the same patient, a dedicated mechanism has been implemented using a set of program rules operating on a hidden **Tumor ID** section. 
+
+![Tumor number check flow](resources/images/ncd_cr_tumor_number_flow.png)
+
+A data element **Previous Tumor Number**, of value type `MULTI_TEXT`, shares the same option set as the Tumor Number element. When a new tumor event is opened, program rules inspect the values recorded in the previous tumor event. If a Tumor Number was recorded in the previous event, that value is assigned to the Previous Tumor Number element. If both a Tumor Number and a Previous Tumor Number were present in the previous event, the two values are concatenated and stored as two separate values within the `MULTI_TEXT` field. Once the Previous Tumor Number has been populated, a further program rule checks whether the value currently entered in the Tumor Number field of the active event already exists among the values stored in Previous Tumor Number. If a match is found, an error message is displayed informing the user that the selected Tumor Number has already been assigned to this patient and that a different value must be chosen.
+
+![Error message for tumor number duplication](resources/images/ncd_cr_tumor_number.gif)
+
+The remaining data elements in the tumor section are aligned and mapped to the CanReg5 data standards and are used as inputs for the data quality checks described in the dedicated section of this document. With the exception of the topography field, all elements are free-selection inputs. The **Topography** field is implemented as a dependent dropdown list: the available topography codes are filtered based on the site selected by the user, so that only the topography values valid for the chosen site are presented for selection. 
+
+To simplify data entry, each option includes the corresponding code in its name, allowing registry staff to search directly by code when selecting a value.
+
+The options sets are mapped with the CanReg5 ICDO3.2 version:
+
+| DHIS2 OptionSets      | **CanReg5 ICDO3.2**                                                                                           |
+|-----------------------|---------------------------------------------------------------------------------------------------------------|
+| **Site / Topography** | https://github.com/IARC-CSU/CanReg5/blob/release/R45/src/canreg/common/resources/dictionaries/topography.tsv  |
+| **Morphology**        | https://github.com/IARC-CSU/CanReg5/blob/release/R45/src/canreg/common/resources/dictionaries/morphology4.tsv |
+| **Behaviour**         | https://github.com/IARC-CSU/CanReg5/blob/release/R45/src/canreg/common/resources/dictionaries/behaviour.tsv   |
+| **Basis diagnosis**   | https://github.com/IARC-CSU/CanReg5/blob/release/R45/src/canreg/common/resources/dictionaries/basis.tsv       |
+| **Grade**             | https://github.com/IARC-CSU/CanReg5/blob/release/R45/src/canreg/common/resources/dictionaries/grade.tsv       |
+
+> **Note**
+>
+>  The option sets used in this section, and the codes associated with each option, are mapped directly to the CanReg5 standards. It is critical that these codes are not modified during local implementation or system maintenance. Any alteration to the option codes will break the logic of the data quality checks, which rely on these values for their calculations
+
+#### Check Status
+
+This section allows the registry staff to trigger the execution of the data quality checks. When the user selects the **Run checks** option, a warning message is displayed for each check that has not been passed, allowing the user to review and correct the relevant entries.
+
+As noted in the mandatory elements section, all data elements in the patient and tumor sections must have a value before the checks can be executed. The only exception is the Grade field, which is mandatory only when the behaviour code is malignant (3).
+
+When Run checks is selected, data entry for the tumor section is blocked. If the user needs to modify any value after the checks have been run, they must uncheck the element to re-enable data entry. This behaviour is enforced by two program rules:
+
+- CR - Block data entry if checks runned
+- CR - Block data entry if checks runned - Grade
+
+![Block data entry when run checks](resources/images/ncd_cr_block_data_entry.gif)
+
+Once **Run checks** is selected, two additional check options become visible: 
+**Run Topography Morphology check** and **Run Multiple primary check**. These 
+have been implemented as separate steps because they require multi-stage 
+verification and the involvement of additional program rules that cannot be 
+executed in a single pass. Further details are provided in the 
+[Checks section](#Checks) of this document. When the main **Run checks** option 
+is selected, these two subsequent checks are mandatory in order to ensure that 
+the full set of quality control checks is executed.
+
+#### Checks section
+
+| **Data Elements**                           | **Value Type** |
+|---------------------------------------------|----------------|
+| CR - Checks: Rare Age Morphology            | Boolean        |
+| CR - Checks: Rare Age Topography            | Boolean        |
+| CR - Checks: Rare Age Topography Morphology | Boolean        |
+| CR - Checks: Rare Basis                     | Boolean        |
+| CR - Checks: Invalid Grade                  | Boolean        |
+| CR - Checks: Rare Sex Morphology            | Boolean        |
+| CR - Checks: Invalid Sex Topography         | Boolean        |
+| CR - Checks: Rare Topography Behaviour      | Boolean        |
+| CR - Checks: Rare Topography Morphology     | Boolean        |
+| CR - Checks: Multiple primary test result   | Option Set     |
+| CR - Rare                                   | Boolean        |
+| CR - Invalid                                | Boolean        |
 
 
 
