@@ -613,7 +613,7 @@ The application also respects the data quality status of each case: it is  desig
 *Run checks* = true, *Rare* = false or confirmed, *Invalid* = false — before 
 initiating an extraction, in order to ensure that only verified and  quality-controlled records are exported to CanReg5.
 
-Further technical details on the application, including installation  instructions, configuration requirements, and usage guidance, are available at:  [placeholder link]
+Further technical details on the application, including installation  instructions, configuration requirements, and usage guidance, are available [here](https://github.com/dhis2/cancer-registry-app/blob/main/README.md)
 
 ## User groups
 
