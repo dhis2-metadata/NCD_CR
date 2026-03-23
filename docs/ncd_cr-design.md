@@ -625,8 +625,6 @@ Further technical details on the application, including installation  instructio
 
 ## References
 
-# References
-
 Bray, F., Colombet, M., Mery, L., Piñeros, M., Znaor, A., Zanetti, R. and  Ferlay, J. (eds.) (2017). *Cancer Incidence in Five Continents, Vol. XI*.  IARC Scientific Publication No. 166. Lyon: International Agency for Research  on Cancer. Available at: <https://ci5.iarc.who.int>
 
 DHIS2. *DHIS2 Tracker Implementation Guide*. Oslo: University of Oslo.  Available at: <https://docs.dhis2.org>
