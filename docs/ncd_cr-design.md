@@ -33,11 +33,46 @@ A key feature of the system design is the implementation of systematic data qual
 
 While the DHIS2 Cancer Registry tracker is not designed to support clinical case management or decision support, it serves as an electronic registry tool that enables structured, standardised cancer case registration within the national DHIS2 health information infrastructure.
 
+> **Warning**
+>
+> The toolkit is intended as a baseline configuration, fully aligned with CanReg5 standards for streamlined data transfer into CanReg5. System administrators may need to localize the program by adding new data elements or attributes, but modification of the baseline configuration is strongly discouraged, as this would likely break the alignment with CanReg5 and program rule logic of the data quality checks.
 
+### Intended Users
 
+The DHIS2 Cancer Registry system design is intended to meet the needs of users at all levels of the cancer registry system. These users may include:
 
+- **Cancer registry managers & staff (national & sub-national)**: data users responsible for overseeing the completeness and quality of cancer case registration, monitoring registry operations, and using registry data to support cancer control planning and reporting
+- **Registry data entry staff**: users responsible for the day-to-day capture and management of individual cancer cases within the tracker program, including recording case notifications received from hospitals, laboratories, and other reporting sources, and applying data quality control procedures to ensure accuracy and completeness of registry records
+- **Cancer programme data managers**: users responsible for overseeing data collection workflows, data quality assurance, and reporting functions for the national cancer registry programme
+- **System admins / HMIS focal points**: Ministry of Health staff and/or core DHIS2 team responsible for maintaining the DHIS2 system, supporting local adaptation of the cancer registry configuration, and providing technical support to end users
+- **Implementing partners and technical assistance providers**: organisations providing technical support to national cancer registries, including IARC, HISP Groups, and other partners involved in system implementation, training, and capacity building
 
+## Tracker
 
+### Tracker program structure
+
+The tracker program structure is as follows:
+
+![Cancer registry tracker structure](resources/images/ncd_cr_cancer_registry_tracker_structure.png)
+
+| **Stage**      | **Description**                                                                                                                                                                                                                                                                                                           |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Enrollment** | The enrollment stage collects the basic demographic data about a person, including unique identifiers, as Tracked Entity Attributes (TEAs). Several of these core TEAs such as Family Name and Given name are shared across DHIS2 Tracker programs. The Tracked Entity Type for the Cancer Registry program is ‘Person’.  |
+| **Tumor**      | This stage contained the core information related to the tumor. The stage is repeatable                                                                                                                                                                                                                                   |
+| **Sources**    | This stage contained the core information related to the sources associated with each tumor. The stage is repeatable                                                                                                                                                                                                      |
+| **Follow-up**  | This stage contained the information for the follow-up of the patient and it’s not associated to either tumor or sources The stage is repeatable                                                                                                                                                                          |
+
+### Tracked Entity Type
+
+The DHIS2 Cancer Registry tracker program allows for the enrollment of a tracked entity type [TET] 'person' into the cancer registry program. Each enrolled person represents an individual cancer patient registered in the population-based cancer registry. The TET is configured at the system level and may be shared with other DHIS2 tracker programs deployed within the same national instance, in line with standard [DHIS2 implementation practice](https://docs.dhis2.org/en/implement/health/dhis2-health-data-toolkit/common-metadata-library/design.html).
+
+### Enrollment
+
+The enrollment stage captures the core patient demographic information required to register an individual in the cancer registry program. As best practice, registry staff should first search for an existing record before creating a new enrollment, in order to avoid duplicate registrations of the same patient.
+
+The attributes collected at enrollment represent the minimum dataset necessary for population-based cancer registration and have been mapped to the IARC standard data requirements. There are five key tracked entity attributes collected at this stage. These attributes are configured at the tracked entity type level and may therefore be shared across other tracker programs within the same DHIS2 instance. However, care must be taken when sharing the **Sex** attribute, as the option set assigned to this attribute uses numeric codes that are referenced in multiple data quality checks throughout the program. Any modification to these codes — or substitution with a differently coded option set — would break the logic of those checks. The OptionSet Sex has been mapped with the relevant [CanReg5 dictionary](https://github.com/IARC-CSU/CanReg5/blob/release/R45/src/canreg/common/resources/dictionaries/sex.tsv).
+
+One attribute, the Patient ID, is automatically generated by the system at the point of enrollment. The pattern follows the same convention used in CanReg5: the identifier is 8 characters long, composed of the current year in four-digit format followed by a four-digit sequential number, in the form `CURRENT_DATE(yyyy)+SEQUENTIAL(####)`.
 
 
 
