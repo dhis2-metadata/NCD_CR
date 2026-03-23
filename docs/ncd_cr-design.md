@@ -609,10 +609,6 @@ The application operates by retrieving tracked entity instances enrolled in the 
 
 The mapping between DHIS2 data elements and the corresponding CanReg5 variable  names is embedded in the toolkit configuration. This mapping covers all  variables required by CanReg5 for a complete case record, including demographic  variables collected at enrollment, clinical and epidemiological variables  collected in the tumor stage, and source documentation variables collected in  the source stage. Users of the application do not need to configure the mapping  manually, as it is pre-defined as part of the toolkit and only requires local  adaptation where placeholder values — such as address codes and source types —  have been customised during implementation.
 
-The application also respects the data quality status of each case: it is  designed to be used in conjunction with the quality control checks implemented  in the tracker, and implementers are strongly advised to apply the analytical  filters described in the [Checks section](#checks) of this document — 
-*Run checks* = true, *Rare* = false or confirmed, *Invalid* = false — before 
-initiating an extraction, in order to ensure that only verified and  quality-controlled records are exported to CanReg5.
-
 Further technical details on the application, including installation  instructions, configuration requirements, and usage guidance, are available [here](https://github.com/dhis2/cancer-registry-app/blob/main/README.md)
 
 ## User groups
