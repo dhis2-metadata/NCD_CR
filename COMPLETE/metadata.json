@@ -23992,7 +23992,7 @@
         "description": "Cancer Registry",
         "healthAreaCode": "NCD",
         "healthAreaName": "Non-Communicable Diseases",
-        "lastUpdated": "20260323T130914",
+        "lastUpdated": "20260330T080634",
         "locale": "en",
         "name": "NCD_CR_TRK_DHIS2.42.4-en",
         "type": "TRK",
@@ -24172,7 +24172,7 @@
             "translations": []
         },
         {
-            "data": "'06'",
+            "data": "'6'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24278,7 +24278,7 @@
             "translations": []
         },
         {
-            "data": "'08'",
+            "data": "'8'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24326,7 +24326,7 @@
             "translations": []
         },
         {
-            "data": "'07'",
+            "data": "'7'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24338,7 +24338,7 @@
             "translations": []
         },
         {
-            "data": "'09'",
+            "data": "'9'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24531,7 +24531,7 @@
             "translations": []
         },
         {
-            "data": "'02'",
+            "data": "'2'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24663,7 +24663,7 @@
             "translations": []
         },
         {
-            "data": "'05'",
+            "data": "'5'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24711,7 +24711,7 @@
             "translations": []
         },
         {
-            "data": "'03'",
+            "data": "'3'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24782,7 +24782,7 @@
             "translations": []
         },
         {
-            "data": "'01'",
+            "data": "'1'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -24890,7 +24890,7 @@
             "translations": []
         },
         {
-            "data": "'04'",
+            "data": "'4'",
             "dataElement": {
                 "id": "yt3gq8onyKb"
             },
@@ -32884,7 +32884,7 @@
             "enableUserAssignment": false,
             "executionDateLabel": "Date last contact",
             "generatedByEnrollmentDate": false,
-            "hideDueDate": false,
+            "hideDueDate": true,
             "id": "eBsqDQj341X",
             "minDaysFromStart": 0,
             "name": "Follow up",
@@ -33010,7 +33010,7 @@
             "displayGenerateEventBox": true,
             "enableUserAssignment": false,
             "generatedByEnrollmentDate": false,
-            "hideDueDate": false,
+            "hideDueDate": true,
             "id": "jPXHxYeFooQ",
             "minDaysFromStart": 0,
             "name": "Source",
@@ -33195,7 +33195,7 @@
             "displayGenerateEventBox": true,
             "enableUserAssignment": false,
             "generatedByEnrollmentDate": false,
-            "hideDueDate": false,
+            "hideDueDate": true,
             "id": "S12EbFtuFoI",
             "minDaysFromStart": 0,
             "name": "Tumor",
