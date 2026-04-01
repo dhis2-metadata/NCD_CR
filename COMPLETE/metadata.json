@@ -2999,10 +2999,10 @@
                     "id": "JlQIBAjInTU"
                 },
                 {
-                    "id": "WvY2qA65GUh"
+                    "id": "KebhmFOyUQ4"
                 },
                 {
-                    "id": "KebhmFOyUQ4"
+                    "id": "WvY2qA65GUh"
                 },
                 {
                     "id": "QgQcrN62STg"
@@ -3155,22 +3155,22 @@
                     "id": "VBUYnU3ukHJ"
                 },
                 {
-                    "id": "TcyvUq75IjR"
+                    "id": "FGTGxuciabv"
                 },
                 {
-                    "id": "FGTGxuciabv"
+                    "id": "TcyvUq75IjR"
                 },
                 {
                     "id": "l5sOVpz49uu"
                 },
                 {
-                    "id": "L3XHbwxDTks"
+                    "id": "uV2axBhnQzw"
                 },
                 {
                     "id": "n8jmHVdZs9q"
                 },
                 {
-                    "id": "uV2axBhnQzw"
+                    "id": "L3XHbwxDTks"
                 },
                 {
                     "id": "zlFhcbw6O7E"
@@ -3211,10 +3211,10 @@
                     "id": "yQXTrSxCmrw"
                 },
                 {
-                    "id": "gXuAmiJ3qxw"
+                    "id": "zZTrbuoLFm7"
                 },
                 {
-                    "id": "zZTrbuoLFm7"
+                    "id": "gXuAmiJ3qxw"
                 },
                 {
                     "id": "ItIIaIzwSFu"
@@ -23992,7 +23992,7 @@
         "description": "Cancer Registry",
         "healthAreaCode": "NCD",
         "healthAreaName": "Non-Communicable Diseases",
-        "lastUpdated": "20260330T080634",
+        "lastUpdated": "20260401T140028",
         "locale": "en",
         "name": "NCD_CR_TRK_DHIS2.42.4-en",
         "type": "TRK",
@@ -24131,18 +24131,6 @@
             "id": "DcgAZuQVGM6",
             "programRule": {
                 "id": "KnAi5ItRorR"
-            },
-            "programRuleActionType": "ASSIGN",
-            "translations": []
-        },
-        {
-            "data": "false",
-            "dataElement": {
-                "id": "fdvzxz58nEE"
-            },
-            "id": "dNAu7U1HbNs",
-            "programRule": {
-                "id": "ulob68oMMQ7"
             },
             "programRuleActionType": "ASSIGN",
             "translations": []
@@ -24615,6 +24603,18 @@
             "translations": []
         },
         {
+            "data": "false",
+            "dataElement": {
+                "id": "U8v95tUnazC"
+            },
+            "id": "t5mNZCArWBu",
+            "programRule": {
+                "id": "ulob68oMMQ7"
+            },
+            "programRuleActionType": "ASSIGN",
+            "translations": []
+        },
+        {
             "data": "#{CR_PREVIOUS_MORPHOLOGY_GROUP}",
             "dataElement": {
                 "id": "dTbQZsduHT7"
@@ -25028,6 +25028,18 @@
             "id": "DMlIa8HfWAA",
             "programRule": {
                 "id": "mhxDy5s4AKo"
+            },
+            "programRuleActionType": "ASSIGN",
+            "translations": []
+        },
+        {
+            "data": "false",
+            "dataElement": {
+                "id": "fdvzxz58nEE"
+            },
+            "id": "dNAu7U1HbNs",
+            "programRule": {
+                "id": "ulob68oMMQ7"
             },
             "programRuleActionType": "ASSIGN",
             "translations": []
@@ -25547,18 +25559,6 @@
             "translations": []
         },
         {
-            "data": "false",
-            "dataElement": {
-                "id": "U8v95tUnazC"
-            },
-            "id": "t5mNZCArWBu",
-            "programRule": {
-                "id": "ulob68oMMQ7"
-            },
-            "programRuleActionType": "ASSIGN",
-            "translations": []
-        },
-        {
             "data": "'9'",
             "dataElement": {
                 "id": "RBu5b3A68mq"
@@ -25828,7 +25828,7 @@
             },
             "id": "bEuTIPw49xV",
             "programRule": {
-                "id": "ZFnLz4vzVDC"
+                "id": "C52NUGggKhW"
             },
             "programRuleActionType": "SHOWWARNING",
             "translations": []
@@ -26271,6 +26271,18 @@
             "translations": []
         },
         {
+            "data": "true",
+            "dataElement": {
+                "id": "U8v95tUnazC"
+            },
+            "id": "noCjoOmaCAO",
+            "programRule": {
+                "id": "C52NUGggKhW"
+            },
+            "programRuleActionType": "ASSIGN",
+            "translations": []
+        },
+        {
             "content": "Rare Age Morphology",
             "dataElement": {
                 "id": "FlGHlAuG4Ly"
@@ -26555,7 +26567,7 @@
             "translations": []
         },
         {
-            "data": "true",
+            "data": "false",
             "dataElement": {
                 "id": "U8v95tUnazC"
             },
@@ -26564,20 +26576,6 @@
                 "id": "ZFnLz4vzVDC"
             },
             "programRuleActionType": "ASSIGN",
-            "translations": []
-        },
-        {
-            "dataElement": {
-                "id": "zw6Vwqnhvmh"
-            },
-            "id": "u5iQEau7UZw",
-            "optionGroup": {
-                "id": "xJLZd79pbF3"
-            },
-            "programRule": {
-                "id": "HTV1V7PpVVL"
-            },
-            "programRuleActionType": "SHOWOPTIONGROUP",
             "translations": []
         },
         {
@@ -27182,6 +27180,20 @@
             },
             "programRule": {
                 "id": "d2RwL8EpgHG"
+            },
+            "programRuleActionType": "SHOWOPTIONGROUP",
+            "translations": []
+        },
+        {
+            "dataElement": {
+                "id": "zw6Vwqnhvmh"
+            },
+            "id": "u5iQEau7UZw",
+            "optionGroup": {
+                "id": "xJLZd79pbF3"
+            },
+            "programRule": {
+                "id": "HTV1V7PpVVL"
             },
             "programRuleActionType": "SHOWOPTIONGROUP",
             "translations": []
@@ -29131,10 +29143,10 @@
                     "id": "XqUxSPnIAox"
                 },
                 {
-                    "id": "aH24vbmXK3f"
+                    "id": "yxKVSsYqW41"
                 },
                 {
-                    "id": "yxKVSsYqW41"
+                    "id": "aH24vbmXK3f"
                 },
                 {
                     "id": "T2jJMcCxBWL"
@@ -29253,10 +29265,10 @@
             },
             "programRuleActions": [
                 {
-                    "id": "dNAu7U1HbNs"
+                    "id": "t5mNZCArWBu"
                 },
                 {
-                    "id": "t5mNZCArWBu"
+                    "id": "dNAu7U1HbNs"
                 },
                 {
                     "id": "kd6drJ88Hny"
@@ -29274,13 +29286,13 @@
                     "id": "UMqdKESmlf4"
                 },
                 {
-                    "id": "ytGDthPD6Bl"
-                },
-                {
                     "id": "KzwL0Cpyjmw"
                 },
                 {
                     "id": "MlyzjXm1T42"
+                },
+                {
+                    "id": "ytGDthPD6Bl"
                 }
             ],
             "programStage": {
@@ -30777,7 +30789,7 @@
             "translations": []
         },
         {
-            "condition": "(d2:hasValue(#{CR_RUN_CHECKS}) && d2:hasValue(#{CR_AGE}) && d2:hasValue(#{CR_TOPOGRAPHY})) &&\n((#{CR_AGE}<5 && \n((#{CR_TOPOGRAPHY}>=530 && #{CR_TOPOGRAPHY}<=539) ||\n#{CR_TOPOGRAPHY}==619))||\n(#{CR_AGE}<20 &&\n(#{CR_TOPOGRAPHY}>=150 && #{CR_TOPOGRAPHY}<=159) ||\n(#{CR_TOPOGRAPHY}>=190 && #{CR_TOPOGRAPHY}<=199) ||\n(#{CR_TOPOGRAPHY}>=200 && #{CR_TOPOGRAPHY}<=209) ||\n(#{CR_TOPOGRAPHY}>=210 && #{CR_TOPOGRAPHY}<=219) ||\n(#{CR_TOPOGRAPHY}>=230 && #{CR_TOPOGRAPHY}<=239) ||\n(#{CR_TOPOGRAPHY}>=240 && #{CR_TOPOGRAPHY}<=249) ||\n(#{CR_TOPOGRAPHY}==384) ||\n(#{CR_TOPOGRAPHY}>=500 && #{CR_TOPOGRAPHY}<=509) ||\n(#{CR_TOPOGRAPHY}>=530 && #{CR_TOPOGRAPHY}<=539) ||\n(#{CR_TOPOGRAPHY}>=540 && #{CR_TOPOGRAPHY}<=549) ||\n(#{CR_TOPOGRAPHY}>=550 && #{CR_TOPOGRAPHY}<=559)))",
+            "condition": "(d2:hasValue(#{CR_RUN_CHECKS}) && d2:hasValue(#{CR_AGE}) && d2:hasValue(#{CR_TOPOGRAPHY})) &&\r\n((#{CR_AGE}<5 && \r\n((#{CR_TOPOGRAPHY}>=530 && #{CR_TOPOGRAPHY}<=539) || \r\n(#{CR_TOPOGRAPHY}>=610 && #{CR_TOPOGRAPHY}<=619))) ||\r\n(#{CR_AGE}<20 && \r\n((#{CR_TOPOGRAPHY}>=150 && #{CR_TOPOGRAPHY}<=159) ||\r\n(#{CR_TOPOGRAPHY}>=190 && #{CR_TOPOGRAPHY}<=199) ||\r\n(#{CR_TOPOGRAPHY}>=200 && #{CR_TOPOGRAPHY}<=209) ||\r\n(#{CR_TOPOGRAPHY}>=210 && #{CR_TOPOGRAPHY}<=219) ||\r\n(#{CR_TOPOGRAPHY}>=230 && #{CR_TOPOGRAPHY}<=239) ||\r\n(#{CR_TOPOGRAPHY}>=240 && #{CR_TOPOGRAPHY}<=249) ||\r\n(#{CR_TOPOGRAPHY}==384) ||\r\n(#{CR_TOPOGRAPHY}>=500 && #{CR_TOPOGRAPHY}<=509) ||\r\n(#{CR_TOPOGRAPHY}>=530 && #{CR_TOPOGRAPHY}<=539) ||\r\n(#{CR_TOPOGRAPHY}>=540 && #{CR_TOPOGRAPHY}<=549) ||\r\n(#{CR_TOPOGRAPHY}>=550 && #{CR_TOPOGRAPHY}<=559))))",
             "description": "Rare Age Topography",
             "id": "oa3GFRX6FSE",
             "name": "CR - Rare Age Topography",
@@ -30821,10 +30833,10 @@
             "translations": []
         },
         {
-            "condition": "d2:hasValue(#{CR_RUN_CHECKS}) &&\r\n(#{CR_BASIS}<5 || (#{CR_BASIS}==9)&&\r\n((#{CR_MORPHOLOGY}==8000 ||\r\n(#{CR_MORPHOLOGY}>=8150 && #{CR_MORPHOLOGY}<=8154) ||\r\n#{CR_MORPHOLOGY}==8170 ||\r\n(#{CR_MORPHOLOGY}>=8270 && #{CR_MORPHOLOGY}<=8281) ||\r\n#{CR_MORPHOLOGY}==8800 ||\r\n(#{CR_MORPHOLOGY}==8720 && (#{CR_TOPOGRAPHY}>=690 && #{CR_TOPOGRAPHY}<=699)) ||\r\n(#{CR_MORPHOLOGY}==8720 && (#{CR_TOPOGRAPHY}>=440 && #{CR_TOPOGRAPHY}<=449)) ||\r\n#{CR_MORPHOLOGY}==8960 ||\r\n#{CR_MORPHOLOGY}==9050 ||\r\n#{CR_MORPHOLOGY}==9100 ||\r\n#{CR_MORPHOLOGY}==9140 ||\r\n#{CR_MORPHOLOGY}==9350 ||\r\n#{CR_MORPHOLOGY}==9380 ||\r\n#{CR_MORPHOLOGY}==9384 ||\r\n#{CR_MORPHOLOGY}==9500 ||\r\n#{CR_MORPHOLOGY}==9510 ||\r\n(#{CR_MORPHOLOGY}>=9530 && #{CR_MORPHOLOGY}<=9539) ||\r\n#{CR_MORPHOLOGY}==9590 ||\r\n#{CR_MORPHOLOGY}==9732 ||\r\n#{CR_MORPHOLOGY}==9761 ||\r\n#{CR_MORPHOLOGY}==9800)))",
-            "description": "Rare basis",
-            "id": "ZFnLz4vzVDC",
-            "name": "CR - Rare basis",
+            "condition": "d2:hasValue(#{CR_RUN_CHECKS}) &&\r\n(#{CR_BASIS}<5 || #{CR_BASIS}==9) &&\r\n(#{CR_MORPHOLOGY}!=8000 &&\r\n#{CR_MORPHOLOGY}!=8150 &&\r\n#{CR_MORPHOLOGY}!=8151 &&\r\n#{CR_MORPHOLOGY}!=8152 &&\r\n#{CR_MORPHOLOGY}!=8153 &&\r\n#{CR_MORPHOLOGY}!=8154 &&\r\n#{CR_MORPHOLOGY}!=8170 &&\r\n#{CR_MORPHOLOGY}!=8270 &&\r\n#{CR_MORPHOLOGY}!=8271 &&\r\n#{CR_MORPHOLOGY}!=8272 &&\r\n#{CR_MORPHOLOGY}!=8273 &&\r\n#{CR_MORPHOLOGY}!=8274 &&\r\n#{CR_MORPHOLOGY}!=8275 &&\r\n#{CR_MORPHOLOGY}!=8276 &&\r\n#{CR_MORPHOLOGY}!=8277 &&\r\n#{CR_MORPHOLOGY}!=8278 &&\r\n#{CR_MORPHOLOGY}!=8279 &&\r\n#{CR_MORPHOLOGY}!=8280 &&\r\n#{CR_MORPHOLOGY}!=8281 &&\r\n#{CR_MORPHOLOGY}!=8800 &&\r\n(#{CR_MORPHOLOGY}!=8720 || \r\n(#{CR_TOPOGRAPHY}!=690 && \r\n#{CR_TOPOGRAPHY}!=691 && \r\n#{CR_TOPOGRAPHY}!=692 && \r\n#{CR_TOPOGRAPHY}!=693 && \r\n#{CR_TOPOGRAPHY}!=694 && \r\n#{CR_TOPOGRAPHY}!=695 && \r\n#{CR_TOPOGRAPHY}!=696 && \r\n#{CR_TOPOGRAPHY}!=697 && \r\n#{CR_TOPOGRAPHY}!=698 && \r\n#{CR_TOPOGRAPHY}!=699)) &&\r\n(#{CR_MORPHOLOGY}!=8720 || \r\n(#{CR_TOPOGRAPHY}!=440 && \r\n#{CR_TOPOGRAPHY}!=441 && \r\n#{CR_TOPOGRAPHY}!=442 && \r\n#{CR_TOPOGRAPHY}!=443 && \r\n#{CR_TOPOGRAPHY}!=444 && \r\n#{CR_TOPOGRAPHY}!=445 && \r\n#{CR_TOPOGRAPHY}!=446 && \r\n#{CR_TOPOGRAPHY}!=447 && \r\n#{CR_TOPOGRAPHY}!=448 && \r\n#{CR_TOPOGRAPHY}!=449)) &&\r\n#{CR_MORPHOLOGY}!=8960 &&\r\n#{CR_MORPHOLOGY}!=9050 &&\r\n#{CR_MORPHOLOGY}!=9100 &&\r\n#{CR_MORPHOLOGY}!=9140 &&\r\n#{CR_MORPHOLOGY}!=9350 &&\r\n#{CR_MORPHOLOGY}!=9380 &&\r\n#{CR_MORPHOLOGY}!=9384 &&\r\n#{CR_MORPHOLOGY}!=9500 &&\r\n#{CR_MORPHOLOGY}!=9510 &&\r\n#{CR_MORPHOLOGY}!=9530 &&\r\n#{CR_MORPHOLOGY}!=9531 &&\r\n#{CR_MORPHOLOGY}!=9532 &&\r\n#{CR_MORPHOLOGY}!=9533 &&\r\n#{CR_MORPHOLOGY}!=9534 &&\r\n#{CR_MORPHOLOGY}!=9535 &&\r\n#{CR_MORPHOLOGY}!=9536 &&\r\n#{CR_MORPHOLOGY}!=9537 &&\r\n#{CR_MORPHOLOGY}!=9538 &&\r\n#{CR_MORPHOLOGY}!=9539 &&\r\n#{CR_MORPHOLOGY}!=9590 &&\r\n#{CR_MORPHOLOGY}!=9732 &&\r\n#{CR_MORPHOLOGY}!=9761 &&\r\n#{CR_MORPHOLOGY}!=9800)",
+            "description": "Rare basis: check not passed",
+            "id": "C52NUGggKhW",
+            "name": "CR - Rare basis: check not passed",
             "priority": 1,
             "program": {
                 "id": "AbPGPdlFWqc"
@@ -30833,6 +30845,25 @@
                 {
                     "id": "bEuTIPw49xV"
                 },
+                {
+                    "id": "noCjoOmaCAO"
+                }
+            ],
+            "programStage": {
+                "id": "S12EbFtuFoI"
+            },
+            "translations": []
+        },
+        {
+            "condition": "d2:hasValue(#{CR_RUN_CHECKS}) &&\n(#{CR_BASIS}<5 || #{CR_BASIS}==9)&&\n((#{CR_MORPHOLOGY}==8000 ||\n(#{CR_MORPHOLOGY}>=8150 && #{CR_MORPHOLOGY}<=8154) ||\n#{CR_MORPHOLOGY}==8170 ||\n(#{CR_MORPHOLOGY}>=8270 && #{CR_MORPHOLOGY}<=8281) ||\n#{CR_MORPHOLOGY}==8800 ||\n(#{CR_MORPHOLOGY}==8720 && (#{CR_TOPOGRAPHY}>=690 && #{CR_TOPOGRAPHY}<=699)) ||\n(#{CR_MORPHOLOGY}==8720 && (#{CR_TOPOGRAPHY}>=440 && #{CR_TOPOGRAPHY}<=449)) ||\n#{CR_MORPHOLOGY}==8960 ||\n#{CR_MORPHOLOGY}==9050 ||\n#{CR_MORPHOLOGY}==9100 ||\n#{CR_MORPHOLOGY}==9140 ||\n#{CR_MORPHOLOGY}==9350 ||\n#{CR_MORPHOLOGY}==9380 ||\n#{CR_MORPHOLOGY}==9384 ||\n#{CR_MORPHOLOGY}==9500 ||\n#{CR_MORPHOLOGY}==9510 ||\n(#{CR_MORPHOLOGY}>=9530 && #{CR_MORPHOLOGY}<=9539) ||\n#{CR_MORPHOLOGY}==9590 ||\n#{CR_MORPHOLOGY}==9732 ||\n#{CR_MORPHOLOGY}==9761 ||\n#{CR_MORPHOLOGY}==9800))",
+            "description": "Rare basis: check passed",
+            "id": "ZFnLz4vzVDC",
+            "name": "CR - Rare basis: check passed",
+            "priority": 2,
+            "program": {
+                "id": "AbPGPdlFWqc"
+            },
+            "programRuleActions": [
                 {
                     "id": "U1UhhaNctxk"
                 }
